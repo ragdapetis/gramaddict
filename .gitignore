@@ -20,3 +20,5 @@ Pipfile.lock
 *.log*
 *.ini
 *.db
+/.py39
+/.py38/*
