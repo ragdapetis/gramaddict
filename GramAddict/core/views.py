@@ -1888,7 +1888,7 @@ class ProfileView(ActionBarView):
 
     def navigateToReelsTab(self):
         self._navigateToTab(TabBarText.REELS_CONTENT_DESC)
-        raise Exception("Not implemented")
+        raise Exception("Not implemented") #TODO
 
     def navigateToEffectsTab(self):
         self._navigateToTab(TabBarText.EFFECTS_CONTENT_DESC)
