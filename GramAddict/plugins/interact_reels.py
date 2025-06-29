@@ -54,7 +54,7 @@ class InteractReels(Plugin):
                 #print(content_desc)
                 #self._comment_on_reel(device)
                 if not device.find(descriptionMatches="Sponsored").exists():
-                    logger.info("Found a Reel. Commenting...")
+                    logger.info("Found a Reel.")
                     if randint(1,10) == randint(1,10):
                         self._comment_on_reel(device)
                 else:
