@@ -48,15 +48,15 @@ class InteractReels(Plugin):
             tab_bar.navigateToReels()
             random_sleep(2, 3)
             # Scroll and interact with reels
-            for _ in range(20):  # Limit to 20 reels for demo
-                #media, content_desc = self._get_media_container(device)
+            while True:  # Limit to 20 reels for demo
+                media, content_desc = self._get_media_container(device)
                 #print(content_desc)
-                self._comment_on_reel(device)
-                # if content_desc and "Reel" in content_desc:
-                #     logger.info("Found a Reel. Commenting...")
-                #     self._comment_on_reel(device)
-                # else:
-                #     logger.info("Not a Reel. Skipping...")
+                #self._comment_on_reel(device)
+                if not device.find(descriptionMatches="Sponsored").exists():
+                    logger.info("Found a Reel. Commenting...")
+                    self._comment_on_reel(device)
+                else:
+                    logger.info("Ad. Skipping...")
                 device.swipe_points(device.get_info()["displayWidth"] // 2, device.get_info()["displayHeight"] * 3 // 4, device.get_info()["displayWidth"] // 2, device.get_info()["displayHeight"] // 4)
                 random_sleep(1, 2)
 
