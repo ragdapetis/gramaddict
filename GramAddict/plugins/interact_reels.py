@@ -5,6 +5,7 @@ from GramAddict.core.decorators import run_safely
 from GramAddict.core.resources import ResourceID as resources
 from colorama import Style
 import logging
+from random import randint
 
 logger = logging.getLogger(__name__)
 
@@ -54,7 +55,8 @@ class InteractReels(Plugin):
                 #self._comment_on_reel(device)
                 if not device.find(descriptionMatches="Sponsored").exists():
                     logger.info("Found a Reel. Commenting...")
-                    self._comment_on_reel(device)
+                    if randint(1,10) == randint(1,10):
+                        self._comment_on_reel(device)
                 else:
                     logger.info("Ad. Skipping...")
                 device.swipe_points(device.get_info()["displayWidth"] // 2, device.get_info()["displayHeight"] * 3 // 4, device.get_info()["displayWidth"] // 2, device.get_info()["displayHeight"] // 4)
