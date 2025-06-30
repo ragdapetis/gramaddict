@@ -41,7 +41,7 @@ class InteractReels(Plugin):
         self.sessions = sessions
         self.unfollow_type = plugin
         self.ResourceID = resources(self.args.app_id)
-        reels_count = getattr(self.args, 'reels_count', 100) or 100
+        reels_count = int(getattr(self.args, 'reels_count', 100)) or 100
         
         @run_safely(
             device=device,
@@ -60,8 +60,8 @@ class InteractReels(Plugin):
             # Scroll and interact with reels
             for i in range(reels_count):
                 if i % 10 == 0: #TODO Dosent look good
-                    device.find(descriptionMatches="Reels").click()
-                    device.find(descriptionMatches="Reels").click()
+                    logger.info(f"Refreshing Reels feed...")
+                    tab_bar.navigateToReels()
 
                 #media, content_desc = self._get_media_container(device)
                 #print(content_desc)
