@@ -24,6 +24,14 @@ class InteractReels(Plugin):
                 "default": None,
                 "operation": True,
             },
+            {
+                "arg": "--reels-count",
+                "nargs": None,
+                "help": "number of reels to interact with (default: 100)",
+                "metavar": None,
+                "default": 100,
+                "operation": False,
+            },
         ]
 
     def run(self, device, configs, storage, sessions, profile_filter, plugin):
@@ -33,6 +41,7 @@ class InteractReels(Plugin):
         self.sessions = sessions
         self.unfollow_type = plugin
         self.ResourceID = resources(self.args.app_id)
+        reels_count = getattr(self.args, 'reels_count', 100) or 100
         
         @run_safely(
             device=device,
@@ -49,7 +58,7 @@ class InteractReels(Plugin):
             tab_bar.navigateToReels()
             random_sleep(2, 3)
             # Scroll and interact with reels
-            while True:  # Limit to 20 reels for demo
+            for _ in range(reels_count):
                 media, content_desc = self._get_media_container(device)
                 #print(content_desc)
                 #self._comment_on_reel(device)
