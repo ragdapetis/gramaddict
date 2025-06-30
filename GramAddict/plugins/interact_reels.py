@@ -58,8 +58,12 @@ class InteractReels(Plugin):
             tab_bar.navigateToReels()
             random_sleep(2, 3)
             # Scroll and interact with reels
-            for _ in range(reels_count):
-                media, content_desc = self._get_media_container(device)
+            for i in range(reels_count):
+                if i % 10 == 0: #TODO Dosent look good
+                    device.find(descriptionMatches="Reels").click()
+                    device.find(descriptionMatches="Reels").click()
+
+                #media, content_desc = self._get_media_container(device)
                 #print(content_desc)
                 #self._comment_on_reel(device)
                 if not device.find(descriptionMatches="Sponsored").exists():
