@@ -5,7 +5,7 @@ from GramAddict.core.decorators import run_safely
 from GramAddict.core.resources import ResourceID as resources
 from colorama import Style
 import logging
-from random import randint
+from random import randint, choice
 
 logger = logging.getLogger(__name__)
 
@@ -87,13 +87,18 @@ class InteractReels(Plugin):
 
     def _comment_on_reel(self, device):
         try:
+            # Horny emoji comments from emojidb.org
+            horny_comments = [
+                "🥵", "😈", "🤤", "🤭", "🍆👅💦🤤", "🫦", "😏", "😘", "😩", "🥰", "🍆🍑👉👌😩💦", "💋", "💦", "❤️", "🔞🥵🍑👉👌", "😍", "🍑💦👅😋"
+            ]
             comment_button = device.find(descriptionMatches="Comment")
             if comment_button.exists():
                 comment_button.click()
                 random_sleep(1, 2)
                 comment_box = device.find(resourceId=self.ResourceID.LAYOUT_COMMENT_THREAD_EDITTEXT)
                 if comment_box.exists():
-                    comment_box.set_text("🔥🔥🔥🔥")
+                    comment = choice(horny_comments)
+                    comment_box.set_text(comment)
                     post_button = device.find(resourceId=self.ResourceID.LAYOUT_COMMENT_THREAD_POST_BUTTON_CLICK_AREA)
                     if post_button.exists():
                         post_button.click()
