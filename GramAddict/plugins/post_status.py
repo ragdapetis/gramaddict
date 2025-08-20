@@ -87,7 +87,7 @@ class PostStatus(Plugin):
             random_sleep(2, 3)
             
             # Click on the on random 1 of top 6 posts
-            first_post = device.find(descriptionMatches=f"^Reel by (.+?) at row {randint(1,2)}, column {randint(1,3)}$")
+            first_post = device.find(descriptionMatches=f"(.+?)  by (.+?) at row {randint(1,2)}, column {randint(1,3)}$")
             if not first_post.exists():
                 logger.error("No posts found in profile")
                 return
