@@ -136,6 +136,9 @@ class PostStatus(Plugin):
             self._update_status_count()
             logger.info("Successfully posted status!", extra={"color": f"{Style.BRIGHT}"})
 
+            device.back()
+            random_sleep(1, 2)
+            
         job()
 
     def _check_daily_limit(self, max_per_day):
