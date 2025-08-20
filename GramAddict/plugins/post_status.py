@@ -102,7 +102,7 @@ class PostStatus(Plugin):
             # Try to find the share/send button (resourceId or text fallback)
             share_button = device.find(resourceId=f"{self.args.app_id}/row_feed_button_share")
             if not share_button.exists():
-                share_button = device.find(descriptionMatches="Send Post|Share")
+                share_button = device.find(descriptionMatches="Send Post|Send post")
             if not share_button.exists():
                 logger.error("Could not find share/send button")
                 return
